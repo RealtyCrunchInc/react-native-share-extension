@@ -85,7 +85,7 @@ RCT_REMAP_METHOD(data,
                 *stop = YES;
             } else if ([provider hasItemConformingToTypeIdentifier:IMAGE_IDENTIFIER]){
                 imageProvider = provider;
-                *stop = YES;
+                *stop = NO;
             }
         }];
 
@@ -97,20 +97,22 @@ RCT_REMAP_METHOD(data,
                     callback([url absoluteString], @"text/plain", nil);
                 }
             }];
-        } else if (imageProvider) {
-            [imageProvider loadItemForTypeIdentifier:IMAGE_IDENTIFIER options:nil completionHandler:^(id<NSSecureCoding> item, NSError *error) {
-                NSURL *url = (NSURL *)item;
-
-                if(callback) {
-                    callback([url absoluteString], [[[url absoluteString] pathExtension] lowercaseString], nil);
-                }
-            }];
-        } else if (textProvider) {
+        }
+        else if (textProvider) {
             [textProvider loadItemForTypeIdentifier:TEXT_IDENTIFIER options:nil completionHandler:^(id<NSSecureCoding> item, NSError *error) {
                 NSString *text = (NSString *)item;
 
                 if(callback) {
                     callback(text, @"text/plain", nil);
+                }
+            }];
+        }
+        else if (imageProvider) {
+            [imageProvider loadItemForTypeIdentifier:IMAGE_IDENTIFIER options:nil completionHandler:^(id<NSSecureCoding> item, NSError *error) {
+                NSURL *url = (NSURL *)item;
+
+                if(callback) {
+                    callback([url absoluteString], [[[url absoluteString] pathExtension] lowercaseString], nil);
                 }
             }];
         } else {
@@ -127,3 +129,4 @@ RCT_REMAP_METHOD(data,
 }
 
 @end
+
