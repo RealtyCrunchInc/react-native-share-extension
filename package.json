@@ -1,5 +1,5 @@
 {
-  "name": "react-native-share-extension",
+  "name": "@RealtyCrunchInc/react-native-share-extension",
   "version": "2.0.2",
   "description": "share extension using react-native for both ios and android",
   "main": "lib/index.js",
@@ -14,6 +14,9 @@
   "author": {
     "name": "RealtyCrunch",
     "email": "support@realtycrunch.io"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "license": "MIT",
   "homepage": "https://github.com/RealtyCrunchInc/react-native-share-extension"
