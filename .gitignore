@@ -2,3 +2,7 @@
 *.iml
 .tags
 .tags1
+/.idea/
+/ios/ReactNativeShareExtension.xcodeproj/xcuserdata/
+/ios/ReactNativeShareExtension.xcodeproj/xcshareddata/
+/ios/ReactNativeShareExtension.xcodeproj/project.xcworkspace/
